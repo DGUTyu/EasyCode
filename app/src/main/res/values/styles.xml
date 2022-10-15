@@ -12,4 +12,12 @@
         <item name="colorButtonNormal">@color/colorButtonNormal</item>
         <item name="colorSwitchThumbNormal">@color/colorSwitchThumbNormal</item>
     </style>
+
+    <!-- Full Style Activity -->
+    <!--    <item name="android:windowBackground">@drawable/test_bg</item>   -->
+    <!--    <item name="android:windowDrawsSystemBarBackgrounds">false</item>   -->
+    <style name="AppThemeFull" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 透明主题 -->
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
 </resources>
