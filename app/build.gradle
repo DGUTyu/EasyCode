@@ -3,25 +3,74 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    //禁用PNG压缩,注意Enabled有一个d
+    //aaptOptions.cruncherEnabled = false
 
+    //开启viewBinding功能
+//    viewBinding {
+//        enabled = true  //注意d
+//    }//此方法在Android 5.0版本已弃用，需要使用以下方法
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
+    //默认配置
     defaultConfig {
-        applicationId "com.wxdgut.easycode"
-        minSdkVersion 19
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        applicationId rootProject.ext.android["applicationId"]
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+
+        // All flavors must now belong to a named flavor dimension.
+        // Android Studio 3.0 之后 多渠道需要配置方向
+        flavorDimensions "default"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        //调试 保留资源 传一个数组，发布时则要去掉
+        //resConfigs("zh","xxhdpi")
+
+        ndk {
+            //"armeabi", "x86","x86_64"
+            //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
+            //目前主流版本（Google Play上架要求app必须适配arm64-v8a）
+            abiFilters "armeabi-v7a", "arm64-v8a"
         }
     }
+
+    //签名配置 要先出现，再可以引用
+    signingConfigs {
+        release {
+            keyAlias 'easycode'
+            keyPassword 'android'
+            storeFile file('/src/main/jks/easycode.jks')
+            storePassword 'dgut.com'
+        }
+    }
+
+    //打包配置
+    buildTypes {
+        release {
+            //shrinkResources为删除无用资源，minifyEnabled为混淆，删除无用代码，但两者是要配合起来用的
+            //只有当两者都为true的时候才会起到真正的删除无效代码和无引用资源的目的
+            //清理无用资源
+            shrinkResources true
+            //是否启动ZipAlign压缩
+            zipAlignEnabled true
+            //是否混淆
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //签名
+            signingConfig signingConfigs.release
+        }
+    }
+
+    //可以解决：java.lang.BootstrapMethodError: Exception from call site #8 bootstrap method
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -31,12 +80,6 @@ android {
 dependencies {
     //
     implementation fileTree(dir: 'libs', includes: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     //添加Framework依赖 单引号
     implementation project(path: ':framework')
 }

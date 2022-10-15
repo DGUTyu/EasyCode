@@ -3,25 +3,37 @@ plugins {
 }
 
 android {
-    compileSdkVersion 32
-    buildToolsVersion "32.0.0"
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
+        debug {
+            //自定义Gradle常量
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "String", "LOG_TAG", "\"EasyCode\""
+            buildConfigField "String", "SP_NAME", "\"EasyCode\""
+        }
         release {
+            //好处：可以区分debug和release
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "String", "LOG_TAG", "\"EasyCode\""
+            buildConfigField "String", "SP_NAME", "\"EasyCode\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    //可以解决：java.lang.BootstrapMethodError: Exception from call site #8 bootstrap method
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -31,8 +43,11 @@ android {
 dependencies {
     //
     implementation fileTree(dir: 'libs', includes: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.1.0'
+    //v7
+    api rootProject.ext.dependencies["appcompat"]
+    //
+    api rootProject.ext.dependencies["material"]
+    api rootProject.ext.dependencies["constraintlayout"]
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
