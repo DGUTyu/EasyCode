@@ -19,5 +19,10 @@
     <style name="AppThemeFull" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- 透明主题 -->
         <item name="android:windowIsTranslucent">true</item>
+        <!--   Customize your theme here     -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/activated_blue</item>
+        <item name="colorControlNormal">@color/normal_blue</item>
+        <item name="colorButtonNormal">@color/white</item>
     </style>
 </resources>

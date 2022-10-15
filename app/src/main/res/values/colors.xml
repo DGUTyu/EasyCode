@@ -7,7 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <!-- 自定义颜色-->
+    <!-- 自定义主题颜色-->
     <!-- 应用的主要色调,actionBar默认使用该颜色,Toolbar导航栏的底色-->
     <color name="colorPrimary">#2196F3</color>
 
@@ -31,5 +31,9 @@
 
     <!-- SwitchCompat默认状态（关闭时）的颜色-->
     <color name="colorSwitchThumbNormal">#7C4DFF</color>
+
+    <!--颜色值-->
+    <color name="normal_blue">#448AFF</color>
+    <color name="activated_blue">#3F51B5</color>
 
 </resources>
