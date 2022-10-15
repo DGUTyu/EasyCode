@@ -7,4 +7,29 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- 自定义颜色-->
+    <!-- 应用的主要色调,actionBar默认使用该颜色,Toolbar导航栏的底色-->
+    <color name="colorPrimary">#2196F3</color>
+
+    <!-- 应用的主要暗色调,statusBarColor，navigationBarColor默认使用该颜色-->
+    <color name="colorPrimaryDark">#3F51B5</color>
+
+    <!--控件的颜色，如CheckBox,RadioButton,SwitchCompat等一般控件的选中效果默认采用该颜色-->
+    <color name="colorAccent">#009688</color>
+
+    <!-- 控件处于激活（例如选中）状态的颜色。editText下划线和光标颜色，优先使用此颜色，没有就默认使用colorAccent-->
+    <color name="colorControlActivated">#FFA000</color>
+
+    <!-- 控件处于正常状态下的颜色。CheckBox,RadioButton,SwitchCompat等默认状态的颜色，优先使用此颜色,不设置则系统用自带的颜色-->
+    <color name="colorControlNormal">#4CAF50</color>
+
+    <!-- 控件高亮显示的颜色（例如涟漪、列表选择器、按压）-->
+    <color name="colorControlHighlight">#FF5722</color>
+
+    <!-- 默认按钮的颜色-->
+    <color name="colorButtonNormal">#FFECB3</color>
+
+    <!-- SwitchCompat默认状态（关闭时）的颜色-->
+    <color name="colorSwitchThumbNormal">#7C4DFF</color>
+
 </resources>

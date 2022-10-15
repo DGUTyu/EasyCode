@@ -4,7 +4,7 @@ ext {
             compileSdkVersion: 30,
             buildToolsVersion: "30.0.2",
             applicationId    : "com.wxdgut.easycode",
-            minSdkVersion    : 19,
+            minSdkVersion    : 21,
             targetSdkVersion : 28,
             versionCode      : 1,
             versionName      : "1.0"
