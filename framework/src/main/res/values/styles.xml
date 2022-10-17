@@ -1,0 +1,16 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="Text"></style>
+    <!-- 文本显示 -->
+    <style name="Text.View">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!-- 标题 -->
+    <style name="Text.View.itemText">
+        <item name="android:layout_width">@dimen/order_item_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/myToast_tv</item>
+        <item name="android:textSize">@dimen/item_size</item>
+    </style>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 轻提示列表宽 -->
+    <dimen name="order_item_width">68dip</dimen>
+    <!-- 轻提示内容字体大小 -->
+    <dimen name="item_size">14sp</dimen>
+</resources>
