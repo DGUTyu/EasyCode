@@ -1,29 +1,27 @@
 package com.wxdgut.easycode;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
-import com.wxdgut.framework.base.BaseUIActivity;
+import com.wxdgut.framework.base.BaseBackActivity;
 
-public class MainActivity extends BaseUIActivity implements View.OnClickListener {
+public class TestActivity extends BaseBackActivity implements View.OnClickListener {
     //视图控件
     private Button btnTest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_test);
         initView();
         initEvent();
     }
 
     //初始化视图控件
     private void initView() {
-        btnTest = findViewById(R.id.btnTest);
+        btnTest = findViewById(com.wxdgut.easycode.R.id.btnTest);
     }
 
     //初始化事件
@@ -35,7 +33,7 @@ public class MainActivity extends BaseUIActivity implements View.OnClickListener
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnTest:
-                startActivity(new Intent(baseContext, TestActivity.class));
+                Toast.makeText(TestActivity.this, "测试2", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
