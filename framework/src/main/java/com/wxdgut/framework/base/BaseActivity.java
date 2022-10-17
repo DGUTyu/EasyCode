@@ -10,6 +10,7 @@ import android.provider.Settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.wxdgut.framework.manager.ActivityManager;
 import com.wxdgut.framework.utils.LogUtils;
 
 import java.util.ArrayList;
@@ -226,6 +227,7 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         baseContext = this;
         TAG = this.getClass().getCanonicalName();
+        ActivityManager.getInstance().addActivity(this);
     }
 
     @Override
